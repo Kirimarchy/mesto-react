@@ -14,7 +14,7 @@ function App() {
    <div className="popup popup_profile">
       <div className="popup__container">
         
-        <form name="subscribeFormclassName" className="popup__form popup__form_profile" novalidate>
+        <form name="subscribeFormclassName" className="popup__form popup__form_profile" noValidate>
           <h2 className="popup__title">Редактировать профиль</h2>
           <button className="popup__close-btn popup__close-btn_profile" type="button"></button>
          <label> 
@@ -23,7 +23,7 @@ function App() {
             name="userName"
             className="popup__input popup__input_type_name" id="nameInput"
             required 
-            placeholder="Ваше имя" minlength="2" maxlength="40"
+            placeholder="Ваше имя" minLength="2" maxLength="40"
           />
           <span className='popup__error' id="nameInputError"></span>
         </label>
@@ -33,7 +33,7 @@ function App() {
             name="userJob"
             className="popup__input popup__input_type_work" id="aboutInput"
             required value=""
-            placeholder="Ваша профессия" minlength="2" maxlength="200"
+            placeholder="Ваша профессия" minLength="2" maxLength="200"
           />
           <span className='popup__error' id="aboutInputError"></span>
         </label>
@@ -55,7 +55,7 @@ function App() {
       <div className ="popup popup_avatar">
         <div className ="popup__container popup__container_avatar">
           <button className="popup__close-btn popup__close-btn_avatar" type="button"></button> 
-          <form className="popup__form popup__form_avatar" name="form" novalidate>
+          <form className="popup__form popup__form_avatar" name="form" noValidate>
             <h2 className="popup__title">Обновить аватар</h2>
             <label className="popup__field">
               <input type="url" className="popup__input popup__input_avatar" id="avatar" name="avatar" required value="" placeholder="Ссылка на картинку"/> 
@@ -79,7 +79,7 @@ function App() {
     <div className="popup popup_mesto">
       <div className="popup__container">
         <button className="popup__close-btn popup__close-btn_mesto" type="button"></button>
-        <form name="placeImageFormclassName" className="popup__form popup__form_mesto" novalidate>
+        <form name="placeImageFormclassName" className="popup__form popup__form_mesto" noValidate>
           <h2 className="popup__title">Новое место</h2>
           <label>
           <input type="text" name="name" className="popup__input popup__input_image_name" id="imageInput"

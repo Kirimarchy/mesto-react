@@ -83,7 +83,7 @@ function App() {
           <h2 className="popup__title">Новое место</h2>
           <label>
           <input type="text" name="name" className="popup__input popup__input_image_name" id="imageInput"
-            value="" placeholder="Название" minlength="2" maxlength="30" required
+            value="" placeholder="Название" minLength="2" maxLength="30" required
           />
           <span className="popup__error" id="imageInputError"></span>
           </label>

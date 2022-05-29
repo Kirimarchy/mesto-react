@@ -1,21 +1,21 @@
 import React from 'react';
 
-function Main() {
+function Main( { handleEditAvatarClick, handleEditProfileClick, handleAddPlaceClick }) {
 
 
-function handleEditAvatarClick(e) {
-      const element1 = document.querySelector('profile__open-button');
+function handleEditAvatarClick() {
+      const element1 = document.querySelector('popup_avatar');
       element1.classList.add('popup_opened');
     }
   
-  function handleEditProfileClick(e) {
-      const element2 = document.querySelector('profile__edit-button');
+  function handleEditProfileClick() {
+      const element2 = document.querySelector('popup_profile');
       element2.classList.add('popup_opened');
     }
   
 
-  function handleAddPlaceClick(e) {
-      const element3 = document.querySelector('popup__button');
+  function handleAddPlaceClick() {
+      const element3 = document.querySelector('popup_mesto');
       element3.classList.add('popup_opened');
   }
 
@@ -24,7 +24,7 @@ function handleEditAvatarClick(e) {
 
       <section className="profile">
         <div className="profile__block">
-          <div className="profile__block-img">
+          <div className="profile__block-img" onClick={ handleEditAvatarClick }>
             <img className="profile__avatar"
               src="#"
               alt="аватарка"
@@ -37,7 +37,7 @@ function handleEditAvatarClick(e) {
           <p className="profile__subtitle">Исследователь океана</p>
         </div>
 
-        <button className="profile__add-button profile__open-button" type="button">
+        <button onClick= { handleAddPlaceClick }className="profile__add-button profile__open-button" type="button">
           <img className="profile__add-image" src=""
             alt="Кнопка добавления новых записей"
           />

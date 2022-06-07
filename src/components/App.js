@@ -54,6 +54,7 @@ const App = () => {
                     name="avatar" title="Обновить аватар"
                     isOpen={isEditAvatarPopupOpen}
                     onClose={closeAllPopups}
+                    buttonTitle= "save"
                 >
                     <label className="popup__field">
                         <input type="url" className="popup__input popup__input_avatar" id="avatar" name="avatar"
@@ -67,6 +68,7 @@ const App = () => {
                     name="mesto" title="Новое место"
                     isOpen={isAddPlacePopupOpen}
                     onClose={closeAllPopups}
+                    buttonTitle= "save"
                 >
                     <label>
                         <input type="text" name="name"
@@ -90,6 +92,7 @@ const App = () => {
                     name="profile" title="Редактировать профиль"
                     isOpen={isEditProfilePopupOpen}
                     onClose={closeAllPopups}
+                    buttonTitle= "save"
                 >
                     <label>
                         <input

@@ -39,13 +39,13 @@ const App = () => {
     }
 
     return (
-        <>
+
             <div className="App">
                 <Header/>
                 <Main
-                    handleAddPlaceClick={() => onAddPlace()}
-                    handleEditAvatarClick={() => onEditAvatar()}
-                    handleEditProfileClick={() => onEditProfile()}
+                    handleAddPlaceClick={onAddPlace} //передаем функцию, а вызваем по необходимости внутри компонента. 
+                    handleEditAvatarClick={onEditAvatar}
+                    handleEditProfileClick={onEditProfile}
                     handleCardClick={(card) => handleCardClick(card)}
                 />
                 <Footer/>
@@ -53,7 +53,7 @@ const App = () => {
                 <PopupWithForm
                     name="avatar" title="Обновить аватар"
                     isOpen={isEditAvatarPopupOpen}
-                    onClose={() => closeAllPopups()}
+                    onClose={closeAllPopups}
                 >
                     <label className="popup__field">
                         <input type="url" className="popup__input popup__input_avatar" id="avatar" name="avatar"
@@ -66,7 +66,7 @@ const App = () => {
                 <PopupWithForm
                     name="mesto" title="Новое место"
                     isOpen={isAddPlacePopupOpen}
-                    onClose={() => closeAllPopups()}
+                    onClose={closeAllPopups}
                 >
                     <label>
                         <input type="text" name="name"
@@ -89,7 +89,7 @@ const App = () => {
                 <PopupWithForm
                     name="profile" title="Редактировать профиль"
                     isOpen={isEditProfilePopupOpen}
-                    onClose={() => closeAllPopups()}
+                    onClose={closeAllPopups}
                 >
                     <label>
                         <input
@@ -115,7 +115,7 @@ const App = () => {
 
                 <ImagePopup
                     card={selectedCard}
-                    onClose={() => closeAllPopups()}
+                    onClose={closeAllPopups}
                 />
 
                 <div className="popup popup_confirm">
@@ -129,7 +129,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
-        </>
+
     );
 }
 

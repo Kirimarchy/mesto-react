@@ -31,9 +31,8 @@ const Main = (props) => {
                 <div className="profile__block">
                     <div className="profile__block-img" onClick={props.handleEditAvatarClick}>
                         <img className="profile__avatar"
-                             src={userAvatar}
-                             alt="аватарка"
-                        />
+                             src={userAvatar && (<img src={addProfile}/>)}
+                             alt="аватарка"/>
                     </div>
                 </div>
                 <div className="profile__info">
@@ -55,9 +54,8 @@ const Main = (props) => {
             <section className="elements">
                 {cards.map((card, i) => (
                     // Без указания атрибута `key`, React выдаст предупреждение об его отсутствии
-                    <React.Fragment key={i}>
-                        <Card card={card} onCardClick={(card) => props.handleCardClick(card)}></Card>
-                    </React.Fragment>
+                        <Card key={i} card={card} onCardClick={(card) => props.handleCardClick(card)}
+                        />
                 ))}
             </section>
         </main>

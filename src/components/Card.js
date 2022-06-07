@@ -13,7 +13,7 @@ const Card = (props) => {
                     <p className="element__like-counter">{props.card.likes.length}</p>
                 </div>
                 <button type="button" className="element__button element__button_action_del"
-                        title="Удалить"></button>
+                        title="Удалить"/>
             </div>
         </div>
     )

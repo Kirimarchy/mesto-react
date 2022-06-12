@@ -2,28 +2,26 @@ import React, {useEffect, useState} from 'react';
 import api from '../utils/Api';
 import Card from './Card'
 import addProfile from '../images/profile-add-image.svg';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-const Main = (props) => {
-    const [userName, setUserName] = useState('');
-    const [userDescription, setUserDescription] = useState('');
-    const [userAvatar, setUserAvatar] = useState('');
-    const [cards, setCards] = useState([]);
+const Main = () => {
+const [cards, setCards] = useState([]);
+// Подписка на контекст
+const currentUser = React.useContext(CurrentUserContext);
 
-    useEffect(() => {
-        api.getUserInfo().then((userInfo) => {
-            setUserName(userInfo.name);
-            setUserDescription(userInfo.about);
-            setUserAvatar(userInfo.avatar);
-        }).catch((err) => {
-            console.log(`Error: ${err}`);
-        });
+// После загрузки текущего пользователя из API
+// его данные будут использованы в управляемых компонентах.
+React.useEffect(() => {
+  setName(currentUser.name);
+  setDescription(currentUser.about);
+}, [currentUser]); 
 
         api.getInitialCards().then((cardsArray) => {
             setCards(cardsArray);
         }).catch((err) => {
             console.log(`Error: ${err}`);
         });
-    }, []);
+
 
     return (
         <main className="content">
@@ -61,6 +59,5 @@ const Main = (props) => {
             </section>
         </main>
     );
-}
-
+                }
 export default Main;

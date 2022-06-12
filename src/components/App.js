@@ -4,6 +4,7 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
+import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
 const App = () => {
     const emptyCard = {
@@ -14,6 +15,19 @@ const App = () => {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
     const [selectedCard, setSelectedCard] = useState(emptyCard);
+     // Стейт, отвечающий за данные текущего пользователя
+     const [currentUser, setCurrentUser] = React.useState({});//11
+
+    useEffect(() => {//11
+        api.getUserInfo().then((currentUser) => {
+            setCurrentUser(currentUser.name);
+            setCurrentUser(currentUser.about);
+            setCurrentUser(currentUser.avatar);
+        }).catch((err) => {
+            console.log(`Error: ${err}`);
+        });
+    });
+
 
     function onAddPlace() {
         setIsAddPlacePopupOpen(true);
@@ -39,7 +53,7 @@ const App = () => {
     }
 
     return (
-
+        <CurrentUserContext.Provider value={currentUser}>
             <div className="App">
                 <Header/>
                 <Main
@@ -132,7 +146,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
-
+</CurrentUserContext.Provider>
     );
 }
 

@@ -4,7 +4,7 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import CurrentUserContext from "../contexts/CurrentUserContext.js";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 
 const App = () => {
     const emptyCard = {
@@ -17,8 +17,11 @@ const App = () => {
     const [selectedCard, setSelectedCard] = useState(emptyCard);
      // Стейт, отвечающий за данные текущего пользователя
      const [currentUser, setCurrentUser] = React.useState({});//11
+     //Внутри currentUser у вас будут все данные пользователя. 
+  //При изменении стейта на уровне App у вас будет меняться значение и этой переменной. 
+  //То есть ваш компонент Main будет всегда в курсе актуальной версии пользователя.
 
-    useEffect(() => {//11
+    /*React.useEffect(() => {//11
         api.getUserInfo().then((currentUser) => {
             setCurrentUser(currentUser.name);
             setCurrentUser(currentUser.about);
@@ -26,8 +29,21 @@ const App = () => {
         }).catch((err) => {
             console.log(`Error: ${err}`);
         });
-    });
+    });*/
 
+    function handleCardDelete (id){
+        api.getUserInfo(id).then(() => {
+            /* используя методы массива, создаем новый массив карточек newCards, где не будет карточки, которую мы только что удалили */
+            setCards(newCards);
+        });
+    }
+
+    function handleCardLike(id) {
+        api.getUserInfo(id).then(() => {
+          //используя методы массива создаем новый массив карточек newCards где карточка будет обновлена
+          setCards(newCards);
+        });
+      }
 
     function onAddPlace() {
         setIsAddPlacePopupOpen(true);
@@ -48,12 +64,8 @@ const App = () => {
         setSelectedCard(emptyCard);
     }
 
-    function handleCardClick(card) {
-        setSelectedCard(card);
-    }
-
-    return (
-        <CurrentUserContext.Provider value={currentUser}>
+    return (// «Внедряем» данные из currentUser с помощью провайдера
+        <CurrentUserContext.Provider value={currentUser}> 
             <div className="App">
                 <Header/>
                 <Main
@@ -61,6 +73,7 @@ const App = () => {
                     handleEditAvatarClick={onEditAvatar}
                     handleEditProfileClick={onEditProfile}
                     handleCardClick={(card) => handleCardClick(card)}
+                    handleCardDelete={(card) => handleCardClick(card)}
                 />
                 <Footer/>
 
@@ -151,3 +164,11 @@ const App = () => {
 }
 
 export default App;
+
+/*changeLikeCardStatus(id, isLiked) {
+    if(isLiked) {
+        return this.likeCard(id);
+      } else {
+        return this.dislikeCard(id)
+      }
+    }*/

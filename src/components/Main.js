@@ -1,45 +1,29 @@
-import React, {useEffect, useState} from 'react';
-import api from '../utils/Api';
+import React from 'react';
 import Card from './Card'
 import addProfile from '../images/profile-add-image.svg';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import currentUserContext from "../contexts/CurrentUserContext"
 
 const Main = (props) => {
-const [cards, setCards] = useState([]);
-// Подписка на контекст
-const currentUser = React.useContext(CurrentUserContext);
-
-// После загрузки текущего пользователя из API
-// его данные будут использованы в управляемых компонентах.
-useEffect(() => {
-  setName(currentUser.name);
-  setDescription(currentUser.about);
-  setUserAvatar(currentUser.avatar);
-}, [currentUser]); 
-
-        api.getInitialCards().then((cardsArray) => {
-            setCards(cardsArray);
-        }).catch((err) => {
-            console.log(`Error: ${err}`);
-        });
-
-
+    const currentUser = React.useContext(currentUserContext); // подписываем его на CurrentUserContext и получаем значение контекста.
+    //Используйте его поля name, about и avatar вместо стейт-переменных userName, userDescription и userAvatar, соответственно.
     return (
         <main className="content">
             <section className="profile">
                 <div className="profile__block">
                     <div className="profile__block-img" onClick={props.handleEditAvatarClick}>
-                        {currentUser.avatar && <img className="profile__avatar"
-                        src={currentUser.avatar}
-                        alt="аватарка"/>
-                             }
+                        <img className="profile__avatar"
+                             src={currentUser.avatar}
+                             alt="аватарка"
+                        />
                     </div>
                 </div>
                 <div className="profile__info">
+
                     <h1 className="profile__title"> {currentUser.name} </h1>
+
                     <button onClick={props.handleEditProfileClick}
                             className="profile__edit-button profile__open-button"
-                            aria-label="Edit" type="button"></button>
+                            aria-label="Edit" type="button"/>
                     <p className="profile__subtitle">{currentUser.about}</p>
                 </div>
 
@@ -52,13 +36,15 @@ useEffect(() => {
                 </button>
             </section>
             <section className="elements">
-                {cards.map((card, i) => (
+                {props.cards.map((card, i) => (
                     // Без указания атрибута `key`, React выдаст предупреждение об его отсутствии
-                        <Card key={card._id} card={card} onCardClick={(card) => props.handleCardClick(card)}
-                        />
+                    <React.Fragment key={i}>
+                        <Card card={card} onCardClick={(card) => props.handleCardClick(card)} onCardLike={() => props.onCardLike(card)} onCardDelete={() => props.onCardDelete(card)}/>
+                    </React.Fragment>
                 ))}
             </section>
         </main>
     );
-                }
+}
+
 export default Main;

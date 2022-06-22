@@ -60,23 +60,7 @@ class Api {
         return fetch(`${this._address}/users/me`, {
             method: "PATCH",
             headers: this._headers,
-            body: JSON.stringify({name: item.userName, about: item.userJob}),
-        }).then(this._getResponse);
-    }
-
-    // добавление лайка
-    likeCard(id) {
-        return fetch(`${this._address}/cards/likes/${id}`, {
-            method: "PUT",
-            headers: this._headers,
-        }).then(this._getResponse);
-    }
-
-    // удаление лайка
-    unlikeCard(id) {
-        return fetch(`${this._address}/cards/likes/${id}`, {
-            method: "DELETE",
-            headers: this._headers,
+            body: JSON.stringify({name: item.name, about: item.about}),
         }).then(this._getResponse);
     }
 
@@ -84,6 +68,13 @@ class Api {
     deleteCard(id) {
         return fetch(`${this._address}/cards/${id}`, {
             method: "DELETE",
+            headers: this._headers,
+        }).then(this._getResponse);
+    }
+
+    changeLikeCardStatus(id, wasLiked) {
+        return fetch(`${this._address}/cards/likes/${id}`, {
+            method: wasLiked? "DELETE" : "PUT",
             headers: this._headers,
         }).then(this._getResponse);
     }

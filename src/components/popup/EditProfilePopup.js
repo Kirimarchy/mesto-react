@@ -46,7 +46,7 @@ const EditProfilePopup = (props) => {
             </label>
             <label>
                 <input
-                    value={description || ''}}
+                    value={description || ''}
                     onChange={(e) => setDescription(e.target.value)}//Не забудьте про обработчики onChange.
                     type="text"
                     name="userJob"

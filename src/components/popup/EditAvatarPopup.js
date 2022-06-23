@@ -18,7 +18,6 @@ const EditAvatarPopup = (props) => {
     }
 
     React.useEffect(() => {
-        setName('')
   setImageLink('')
 },[props.isOpen]);
 

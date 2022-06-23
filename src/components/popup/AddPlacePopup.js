@@ -19,8 +19,9 @@ const AddPlacePopup = (props) => {
     }
 
     React.useEffect(() => {
-        setImageLink(currentUser.avatar);
-    }, [currentUser]);
+        setName('')
+        setImageLink('')
+      },[props.isOpen]);
 
     return (
         <PopupWithForm

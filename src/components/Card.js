@@ -19,7 +19,7 @@ const Card = (props) => {
 
     return (
         <div className="element">
-            <img className="element__image" src={props.card.link} alt=""
+            <img className="element__image" src={props.card.link} alt={props.card.name}
                  onClick={() => props.onCardClick(props.card)}/>
             <div className="element__text">
                 <h2 className="element__title">{props.card.name}</h2>

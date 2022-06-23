@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react'; 
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -77,7 +77,7 @@ const App = () => {
         api.deleteCard(card._id).then(() => {
             setCards((state) =>  state.filter((c) => c._id !== card._id));//После запроса в API, обновите стейт cards с помощью метода filter: 
                                                                          //создайте копию массива, исключив из него удалённую карточку.
-        });
+        })
         return;
     }
 
@@ -105,7 +105,6 @@ const App = () => {
     }, []);
 
     return (
-        <>
             <currentUserContext.Provider value={currentUser}>
                 <div className="App">
                     <Header/>
@@ -119,8 +118,6 @@ const App = () => {
                         onCardDelete={(card) => handleCardDelete(card)}
                     />
                     <Footer/>
-
-
 
                     <AddPlacePopup
                         isOpen={isAddPlacePopupOpen}
@@ -158,7 +155,7 @@ const App = () => {
                     </div>
                 </div>
             </currentUserContext.Provider>
-        </>
+    
     );
 }
 

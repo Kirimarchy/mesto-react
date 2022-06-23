@@ -18,11 +18,12 @@ const EditProfilePopup = (props) => {
             about: description,
         });
     }
-
+//// После загрузки текущего пользователя из API
+// его данные будут использованы в управляемых компонентах.
     React.useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
-    }, [currentUser]);
+    }, [currentUser, isOpen]);
 
     return (
         <PopupWithForm
@@ -33,7 +34,7 @@ const EditProfilePopup = (props) => {
         >
             <label>
                 <input
-                    value={name}
+                    value={ name || ''}
                     onChange={(e) => setName(e.target.value)} //Не забудьте про обработчики onChange.
                     type="text"
                     name="userName"
@@ -45,7 +46,7 @@ const EditProfilePopup = (props) => {
             </label>
             <label>
                 <input
-                    value={description}
+                    value={description || ''}}
                     onChange={(e) => setDescription(e.target.value)}//Не забудьте про обработчики onChange.
                     type="text"
                     name="userJob"

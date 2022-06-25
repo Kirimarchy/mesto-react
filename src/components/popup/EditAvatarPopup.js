@@ -21,6 +21,7 @@ const EditAvatarPopup = (props) => {
   setImageLink('')
 },[props.isOpen]);
 
+
     return (
         <PopupWithForm
             name="avatar" title="Обновить аватар"

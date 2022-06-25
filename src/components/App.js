@@ -69,6 +69,8 @@ const App = () => {
         // Отправляем запрос в API и получаем обновлённые данные карточки
         api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
             setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        }).catch((err) => {
+            console.log(`Error: ${err}`);
         });
         return;
     }
@@ -77,7 +79,9 @@ const App = () => {
         api.deleteCard(card._id).then(() => {
             setCards((state) =>  state.filter((c) => c._id !== card._id));//После запроса в API, обновите стейт cards с помощью метода filter: 
                                                                          //создайте копию массива, исключив из него удалённую карточку.
-        })
+        }).catch((err) => {
+            console.log(`Error: ${err}`);
+        });
         return;
     }
 
@@ -86,6 +90,8 @@ const App = () => {
             setCards((state) => [newCard, ...state]); //После завершения API-запроса внутри него обновите стейт cards с помощью расширенной копии текущего массива
                                                       // — используйте оператор ...:
             closeAllPopups();
+        }).catch((err) => {
+            console.log(`Error: ${err}`);
         });
         return;
     }

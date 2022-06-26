@@ -36,7 +36,7 @@ const Main = (props) => {
                 </button>
             </section>
             <section className="elements">
-                {props.cards.map((card, i) => (
+                {props.cards.map((card) => (
                     // Без указания атрибута `key`, React выдаст предупреждение об его отсутствии
                     <React.Fragment key={card._id}>
                         <Card key={card._id} card={card} onCardClick={(card) => props.handleCardClick(card)} onCardLike={() => props.onCardLike(card)} onCardDelete={() => props.onCardDelete(card)}/>

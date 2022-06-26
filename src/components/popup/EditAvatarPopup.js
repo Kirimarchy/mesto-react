@@ -28,6 +28,7 @@ const EditAvatarPopup = (props) => {
             isOpen={props.isOpen}
             onClose={() => props.onClose()}
             handleSubmit={(e) => handleSubmit(e)}
+            buttonTitle = { 'Сохранить' }
         >
             <label className="popup__field">
                 <input

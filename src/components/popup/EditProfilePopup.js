@@ -28,10 +28,11 @@ const EditProfilePopup = (props) => {
     return (
         <PopupWithForm
             name="profile"
-            title="Редактировать профиль"
             isOpen={props.isOpen}
             onClose={() => props.onClose()}
+            title="Редактировать профиль"
             handleSubmit={(e) => handleSubmit(e)}
+            buttonTitle = { 'Сохранить' }
         >
             <label>
                 <input
@@ -52,7 +53,7 @@ const EditProfilePopup = (props) => {
                     type="text"
                     name="userJob"
                     className="popup__input popup__input_type_work" id="aboutInput"
-                    required defaultValue=""
+                    required
                     placeholder="Ваша профессия" minLength="2" maxLength="200"
                 />
                 <span className='popup__error' id="aboutInputError"/>

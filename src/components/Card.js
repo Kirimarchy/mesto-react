@@ -21,6 +21,13 @@ const Card = (props) => {
         props.onCardClick(props.card)
   }
 
+    function handleCardLike(){
+        props.onCardLike(props.card)
+  }
+    function handleCardDelete(){
+        props.onCardDelete(props.card)
+  }
+
     return (
         <div className="element">
             <img className="element__image" src={props.card.link} alt={props.card.name}
@@ -30,12 +37,12 @@ const Card = (props) => {
                 <div className="element__like-group">
                     <button className={cardLikeButtonClassName}
                             aria-label="Мне нравится"//Теперь нужно добавить пропс onCardLike для компонента Card и задать в него эту функцию
-                            type="button" onClick={() => props.onCardLike(props.card)}/>
+                            type="button" onClick={handleCardLike}/>
                     <p className="element__like-counter">{props.card.likes.length}</p>
                 </div>
                 <button type="button" className={cardDeleteButtonClassName}
                         title="Удалить"
-                        onClick={handleCardClick}/>
+                        onClick={handleCardDelete}/>
             </div>
         </div>
     )

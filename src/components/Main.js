@@ -12,8 +12,8 @@ const Main = (props) => {
                 <div className="profile__block">
                     <div className="profile__block-img" onClick={props.handleEditAvatarClick}>
                         <img className="profile__avatar"
-                             src={currentUser.avatar}
-                             alt="аватарка"
+                            src={currentUser.avatar}
+                            alt="аватарка"
                         />
                     </div>
                 </div>
@@ -22,16 +22,16 @@ const Main = (props) => {
                     <h1 className="profile__title"> {currentUser.name} </h1>
 
                     <button onClick={props.handleEditProfileClick}
-                            className="profile__edit-button profile__open-button"
-                            aria-label="Edit" type="button"/>
+                        className="profile__edit-button profile__open-button"
+                        aria-label="Edit" type="button" />
                     <p className="profile__subtitle">{currentUser.about}</p>
                 </div>
 
                 <button onClick={props.handleAddPlaceClick}
-                        className="profile__add-button profile__open-button"
-                        type="button">
+                    className="profile__add-button profile__open-button"
+                    type="button">
                     <img className="profile__add-image" src={addProfile}
-                         alt="Кнопка добавления новых записей"
+                        alt="Кнопка добавления новых записей"
                     />
                 </button>
             </section>
@@ -39,7 +39,7 @@ const Main = (props) => {
                 {props.cards.map((card) => (
                     // Без указания атрибута `key`, React выдаст предупреждение об его отсутствии
                     <React.Fragment key={card._id}>
-                        <Card key={card._id} card={card} onCardClick={(card) => props.handleCardClick(card)} onCardLike={() => props.onCardLike(card)} onCardDelete={() => props.onCardDelete(card)}/>
+                        <Card key={card._id} card={card} onCardClick={(card) => props.handleCardClick(card)} onCardLike={() => props.onCardLike(card)} onCardDelete={() => props.onCardDelete(card)} />
                     </React.Fragment>
                 ))}
             </section>

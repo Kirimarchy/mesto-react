@@ -1,26 +1,22 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PopupWithForm from "../PopupWithForm";
 import currentUserContext from "../../contexts/CurrentUserContext"
 //На этот раз вместо управляемых компонентов используйте реф,
 // чтобы получить прямой доступ к DOM-элементу инпута и его значению.
 const EditAvatarPopup = (props) => {
     const [imageLink, setImageLink] = useState('');
-
     const currentUser = React.useContext(currentUserContext);
 
     function handleSubmit(e) {
         e.preventDefault();// Не забудьте обновлять аватар локально после завершения запроса.
-
         props.onUpdateAvatar({
             avatar: imageLink, // Значение инпута, полученное с помощью рефа */,
         });
-
     }
 
     React.useEffect(() => {
-  setImageLink('')
-},[props.isOpen]);
-
+        setImageLink('');
+    }, [props.isOpen]);
 
     return (
         <PopupWithForm
@@ -28,7 +24,7 @@ const EditAvatarPopup = (props) => {
             isOpen={props.isOpen}
             onClose={() => props.onClose()}
             handleSubmit={(e) => handleSubmit(e)}
-            buttonTitle = { 'Сохранить' }
+            buttonTitle={'Сохранить'}
         >
             <label className="popup__field">
                 <input
@@ -41,7 +37,7 @@ const EditAvatarPopup = (props) => {
                     required
                     placeholder="Ссылка на картинку"
                 />
-                <span className="popup__error" id="avatarError"/>
+                <span className="popup__error" id="avatarError" />
             </label>
         </PopupWithForm>
     )

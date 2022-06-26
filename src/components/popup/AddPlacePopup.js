@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PopupWithForm from "../PopupWithForm";
 
 const AddPlacePopup = (props) => {
-    const [name, setName] = useState('');
-    const [imageLink, setImageLink] = useState('');
-
     const nameRef = React.createRef();
     const imageLinkRef = React.createRef();
 
@@ -20,9 +17,9 @@ const AddPlacePopup = (props) => {
     }
 
     React.useEffect(() => {
-        setName('')
-        setImageLink('')
-      },[props.isOpen]
+        nameRef.current.value = '';
+        imageLinkRef.current.value = '';
+    }, [props.isOpen]
     )
 
     return (
@@ -32,12 +29,11 @@ const AddPlacePopup = (props) => {
             onClose={() => props.onClose()}
             title="Новое место"
             handleSubmit={(e) => handleSubmit(e)}
-            buttonTitle = { 'Сохранить' }
+            buttonTitle={'Сохранить'}
         >
             <label>
                 <input
-                   ref={nameRef}
-                   defaultValue={name}
+                    ref={nameRef}
                     type="text"
                     name="name"
                     className="popup__input popup__input_image_name"
@@ -47,19 +43,18 @@ const AddPlacePopup = (props) => {
                     maxLength="30"
                     required
                 />
-                <span className="popup__error" id="imageInputError"/>
+                <span className="popup__error" id="imageInputError" />
             </label>
             <label>
                 <input
                     ref={imageLinkRef}
-                    defaultValue={imageLink}
                     type="url" name="link"
                     className="popup__input popup__input_image_src"
                     id="srcInput"
                     placeholder="Ссылка на картинку"
                     required
                 />
-                <span className="popup__error" id="srcInputError"/>
+                <span className="popup__error" id="srcInputError" />
             </label>
         </PopupWithForm>
     )

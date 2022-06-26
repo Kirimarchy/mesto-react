@@ -38,7 +38,6 @@ const EditAvatarPopup = (props) => {
                     id="avatar"
                     name="avatar"
                     required
-                    defaultValue=""
                     placeholder="Ссылка на картинку"
                 />
                 <span className="popup__error" id="avatarError"/>
